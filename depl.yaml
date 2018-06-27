@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: crasher
+  labels:
+     app: crasher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crasher
+  template:
+    metadata:
+      labels:
+        app: crasher
+    spec:
+      containers:
+      - image: "mlda065/crasher"
+        name: crasher
+      restartPolicy: Always
